@@ -3,17 +3,17 @@ import React, { useState, useEffect } from "react";
 import { Todos } from './Todos'
 import { FormInput } from "./FormInput";
 
-
-
 function App() {
 
-  const [change, setChange] = useState("");
+  const [change, setChange] = useState();
 
-  const [todos, setTodos] = useState([]);
-
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
+  
+  
   useEffect(() => {
-    console.log(todos);
-  });
+      localStorage.setItem('todos', JSON.stringify(todos));
+      }, [todos])
+
 
   const ChangeValue = (e) => {
     setChange(e.target.value);
@@ -21,10 +21,11 @@ function App() {
 
   const AddTodo = (e) => {
 
+
     const TodoId = Math.floor(Math.random() * 10000) + 1
 
     const newTodo = { content: change, id: TodoId }
-
+ 
     setTodos((oldTodos) => [...oldTodos, newTodo]);
 
     e.preventDefault()
@@ -32,10 +33,13 @@ function App() {
 
   const DeleteButton = (id) => {
     setTodos(todos.filter((item)=> item.id !== id));
+    localStorage.removeItem(todos.filter((item)=> item.id !== id))
   };
 
   const DeleteAll = () => {
     setTodos([]);
+    localStorage.removeItem('todoInLocalStorage')
+    
   };
 
   return (
