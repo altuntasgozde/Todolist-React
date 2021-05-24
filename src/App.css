@@ -12,7 +12,7 @@
   height: 600px;
 }
 
-input {
+.todoInput {
   margin-right: 20px;
   height: 35px;
   width: 250px;
@@ -20,7 +20,7 @@ input {
   border: 1px solid #d3d3d3;
 }
 
-input:focus {
+.todoInput:focus {
   outline: #d3d3d3;
 }
 
@@ -45,13 +45,31 @@ button {
   margin-top: 40px;
 }
 
-.content {
-  width: 70%;
+/* Todo */
+
+.todo {
+  display:flex;
+  
+}
+
+input[type=checkbox]{
+  height: 35px;
+  width: 250px;
+  margin-top:15px;
+  width:10%
+}
+
+.deleteButton {
+  margin-top:15px;
 }
 
 h4 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  width: 60%;
 }
+
+.done {
+  color:#787878;
+  text-decoration: line-through;
+}
+
 
