@@ -7,7 +7,7 @@ export const FormInput = ({ChangeValue,AddTodo}) => {
             <form> 
             <div className="form-control">
               <input className="todoInput" type="text" onChange={ChangeValue}   />
-              <button onClick={AddTodo}>Add To do</button>
+              <button onClick={AddTodo} className="addBtn">Add To do</button>
             </div>
           </form>
         </div>

@@ -8,8 +8,40 @@
 }
 
 .frame {
-  width: 600px;
-  height: 600px;
+  border-radius: 10px;
+  padding:25px;
+  background-color: #73D9F0;
+  max-height: 600px;
+}
+
+.frame h1 {
+  color:white;
+}
+
+.todos {
+  overflow-y:scroll;
+  height:200px;
+  padding-right: 20px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
 
 .todoInput {
@@ -24,13 +56,22 @@
   outline: #d3d3d3;
 }
 
-button {
+.addBtn {
   padding: 8px 9px;
-  background-color: darkblue;
-  border: 1px solid darkblue;
+  background-color: #EB773E;
+  border: 1px solid #EB773E;
   color: white;
   border-radius: 5px;
   margin-right: 40px;
+}
+
+button {
+  padding: 8px 9px;
+  background-color: #EB773E;
+  border: 1px solid #EB773E;
+  color: white;
+  border-radius: 5px;
+ 
 }
 
 .card-1 {
@@ -39,6 +80,12 @@ button {
 
 .card-2 {
   margin-top: 40px;
+  color:white;
+}
+
+
+.card-2 h4 {
+  color:black;
 }
 
 .ClearTodo {
@@ -49,27 +96,36 @@ button {
 
 .todo {
   display:flex;
-  
+  background-color: white;
+  margin-top: 10px;
+  border-radius: 10px;
+  justify-content: space-between;
+  padding: 0 15px;
 }
 
 input[type=checkbox]{
-  height: 35px;
-  width: 250px;
-  margin-top:15px;
-  width:10%
+  height:25px;
+  width: 25px;
+  margin-top:20px;
+  
+}
+
+.inputPart {
+  display: flex;
 }
 
 .deleteButton {
   margin-top:15px;
 }
 
-h4 {
-  width: 60%;
+.content {
+  margin-left:5px;
 }
 
 .done {
-  color:#787878;
+  color:#787878 !important;
   text-decoration: line-through;
+  margin-left: 5px;
 }
 
 

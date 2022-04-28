@@ -4,10 +4,13 @@ import { Todos } from "./Todos";
 import { FormInput } from "./FormInput";
 
 function App() {
+
+  const [status,setStatus] = useState(false)
+
   const [change, setChange] = useState("");
 
   const [todos, setTodos] = useState(
-    JSON.parse(localStorage.getItem("todos")) || []
+    JSON.parse(localStorage.getItem("todos")) || [] 
   );
 
   const [check, setCheck] = useState(false)
@@ -15,7 +18,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
     setCheck(false)
-  }, [todos,check]);
+    if (todos.length < 1){
+      setStatus(false)
+    }
+  }, [todos,check,status]);
 
   const ChangeValue = (e) => {
     setChange(e.target.value);
@@ -28,17 +34,21 @@ function App() {
 
     setTodos((oldTodos) => [...oldTodos, newTodo]);
 
+    setStatus(true)
+
     e.preventDefault();
   };
 
   const DeleteButton = (id) => {
     setTodos(todos.filter((item) => item.id !== id));
     localStorage.removeItem(todos.filter((item) => item.id !== id));
+    
   };
 
   const DeleteAll = () => {
     setTodos([]);
     localStorage.removeItem("todoInLocalStorage");
+    setStatus(false)
   };
 
 
@@ -60,14 +70,14 @@ function App() {
       <div className="frame">
         <h1>To Do List</h1>
         <FormInput ChangeValue={ChangeValue} AddTodo={AddTodo} />
-        <div className="card-2">
+     {status ? <div className="card-2" >
           <h2>
             <u>To Do's</u>
           </h2>
           <div className="todos">
             <Todos CheckTodo={CheckTodo} todos={todos} DeleteButton={DeleteButton} />
           </div>
-        </div>
+        </div> : null}
         <button onClick={DeleteAll} className="ClearTodo">
           Clear All To Do
         </button>
